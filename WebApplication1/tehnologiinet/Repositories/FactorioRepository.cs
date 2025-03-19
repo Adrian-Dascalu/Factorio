@@ -1,4 +1,4 @@
-using tehnologiinet.NewDirectory1;
+using tehnologiinet.Entities;
 using System.Text.Json;
 using System.Runtime.Versioning;
 
@@ -36,14 +36,54 @@ public class FactorioRepository: IFactorioRepository
         return GetAllConsumptionFromDb().FirstOrDefault(x => x.Item == item)!;
     }
 
-    
-
-    private void SaveStudentsToJson(List<Student> students)
+    public void UpdateProduction(Factorio updatedProduction)
     {
-        var json = JsonSerializer.Serialize(students, new JsonSerializerOptions { WriteIndented = true });
+        var productions = LoadProductionFromJson();
+        var production = productions.FirstOrDefault(s => s.Id == updatedProduction.Id);
 
+
+    }
+
+    private List<Production> LoadProductionFromJson()
+    {
+        var file_path = "../Factorio/production-nauvis-10min.json";
         
-        File.WriteAllText("students.json", json);
+        if (!File.Exists(file_path))
+        {
+            return new List<Production>(); // Return empty list if file does not exist
+        }
+
+        var json = File.ReadAllText(file_path);
+        return JsonSerializer.Deserialize<List<Production>>(json) ?? new List<Production>();
+    }
+
+    private List<Consumption> LoadConsumptionFromJson()
+    {
+        var file_path = "../Factorio/consumption-nauvis-10min.json";
+        
+        if (!File.Exists(file_path))
+        {
+            return new List<Consumption>(); // Return empty list if file does not exist
+        }
+
+        var json = File.ReadAllText(file_path);
+        return JsonSerializer.Deserialize<List<Consumption>>(json) ?? new List<Consumption>();
+    }
+
+    private List<Recipies> LoadRecipiesFromJson()
+    {
+        var file_path = "../Factorio/data-raw-dump.json";
+        
+        if (!File.Exists(file_path))
+        {
+            return new List<Recipies>(); // Return empty list if file does not exist
+        }
+
+        var json = File.ReadAllText(file_path);
+
+        var recipe = json['recipe'];
+
+        return JsonSerializer.Deserialize<List<Recipies>>(json) ?? new List<Recipies>();
     }
 
     public void UpdateStudent(Student updatedStudent)

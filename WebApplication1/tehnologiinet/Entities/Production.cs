@@ -1,6 +1,6 @@
-namespace tehnologiinet.NewDirectory1;
+namespace tehnologiinet.Entities;
 
-public class Student
+public class Production
 {
     public long Id { get; set; }
     public string FirstName { get; set; }
