@@ -1,0 +1,252 @@
+{
+  "Version": 1,
+  "ManifestType": "Build",
+  "Endpoints": [
+    {
+      "Route": "tictactoe/firstpage.html",
+      "AssetFile": "tictactoe/firstpage.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3017"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uoGmmU7OXRg2gTzHeVYme+MgSMzzKX0IFLiS14p5Tvc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Mar 2025 21:18:30 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-uoGmmU7OXRg2gTzHeVYme+MgSMzzKX0IFLiS14p5Tvc="
+        }
+      ]
+    },
+    {
+      "Route": "tictactoe/firstpage.i2eqkxkvp9.html",
+      "AssetFile": "tictactoe/firstpage.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3017"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uoGmmU7OXRg2gTzHeVYme+MgSMzzKX0IFLiS14p5Tvc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Mar 2025 21:18:30 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "i2eqkxkvp9"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-uoGmmU7OXRg2gTzHeVYme+MgSMzzKX0IFLiS14p5Tvc="
+        },
+        {
+          "Name": "label",
+          "Value": "tictactoe/firstpage.html"
+        }
+      ]
+    },
+    {
+      "Route": "tictactoe/main.js",
+      "AssetFile": "tictactoe/main.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8573"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vvBfuU4HIhnhDPQzp7FavQGWfRGMu7lAXV4xLgkcdss=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Mar 2025 08:31:31 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-vvBfuU4HIhnhDPQzp7FavQGWfRGMu7lAXV4xLgkcdss="
+        }
+      ]
+    },
+    {
+      "Route": "tictactoe/main.qejorjjlvq.js",
+      "AssetFile": "tictactoe/main.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8573"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vvBfuU4HIhnhDPQzp7FavQGWfRGMu7lAXV4xLgkcdss=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Mar 2025 08:31:31 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qejorjjlvq"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-vvBfuU4HIhnhDPQzp7FavQGWfRGMu7lAXV4xLgkcdss="
+        },
+        {
+          "Name": "label",
+          "Value": "tictactoe/main.js"
+        }
+      ]
+    },
+    {
+      "Route": "tictactoe/style.1f8ydgn2qv.css",
+      "AssetFile": "tictactoe/style.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2504"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"40ODAz5yo73E5a+2DgInxxqvZFw+jnmRaOKrdkvmTls=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Mar 2025 15:22:21 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1f8ydgn2qv"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-40ODAz5yo73E5a+2DgInxxqvZFw+jnmRaOKrdkvmTls="
+        },
+        {
+          "Name": "label",
+          "Value": "tictactoe/style.css"
+        }
+      ]
+    },
+    {
+      "Route": "tictactoe/style.css",
+      "AssetFile": "tictactoe/style.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2504"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"40ODAz5yo73E5a+2DgInxxqvZFw+jnmRaOKrdkvmTls=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Mar 2025 15:22:21 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-40ODAz5yo73E5a+2DgInxxqvZFw+jnmRaOKrdkvmTls="
+        }
+      ]
+    }
+  ]
+}

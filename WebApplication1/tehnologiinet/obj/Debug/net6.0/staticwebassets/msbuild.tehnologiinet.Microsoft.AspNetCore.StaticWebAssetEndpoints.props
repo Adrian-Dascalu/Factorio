@@ -1,0 +1,40 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/tehnologiinet/tictactoe/firstpage.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\tictactoe\firstpage.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-uoGmmU7OXRg2gTzHeVYme\u002BMgSMzzKX0IFLiS14p5Tvc="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"3017"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022uoGmmU7OXRg2gTzHeVYme\u002BMgSMzzKX0IFLiS14p5Tvc=\u0022"},{"Name":"Last-Modified","Value":"Wed, 12 Mar 2025 21:18:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/tehnologiinet/tictactoe/firstpage.i2eqkxkvp9.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\tictactoe\firstpage.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"i2eqkxkvp9"},{"Name":"integrity","Value":"sha256-uoGmmU7OXRg2gTzHeVYme\u002BMgSMzzKX0IFLiS14p5Tvc="},{"Name":"label","Value":"_content/tehnologiinet/tictactoe/firstpage.html"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3017"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022uoGmmU7OXRg2gTzHeVYme\u002BMgSMzzKX0IFLiS14p5Tvc=\u0022"},{"Name":"Last-Modified","Value":"Wed, 12 Mar 2025 21:18:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/tehnologiinet/tictactoe/main.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\tictactoe\main.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-vvBfuU4HIhnhDPQzp7FavQGWfRGMu7lAXV4xLgkcdss="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"8573"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022vvBfuU4HIhnhDPQzp7FavQGWfRGMu7lAXV4xLgkcdss=\u0022"},{"Name":"Last-Modified","Value":"Thu, 13 Mar 2025 08:31:31 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/tehnologiinet/tictactoe/main.qejorjjlvq.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\tictactoe\main.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"qejorjjlvq"},{"Name":"integrity","Value":"sha256-vvBfuU4HIhnhDPQzp7FavQGWfRGMu7lAXV4xLgkcdss="},{"Name":"label","Value":"_content/tehnologiinet/tictactoe/main.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"8573"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022vvBfuU4HIhnhDPQzp7FavQGWfRGMu7lAXV4xLgkcdss=\u0022"},{"Name":"Last-Modified","Value":"Thu, 13 Mar 2025 08:31:31 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/tehnologiinet/tictactoe/style.1f8ydgn2qv.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\tictactoe\style.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"1f8ydgn2qv"},{"Name":"integrity","Value":"sha256-40ODAz5yo73E5a\u002B2DgInxxqvZFw\u002BjnmRaOKrdkvmTls="},{"Name":"label","Value":"_content/tehnologiinet/tictactoe/style.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2504"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u002240ODAz5yo73E5a\u002B2DgInxxqvZFw\u002BjnmRaOKrdkvmTls=\u0022"},{"Name":"Last-Modified","Value":"Tue, 11 Mar 2025 15:22:21 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/tehnologiinet/tictactoe/style.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\tictactoe\style.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-40ODAz5yo73E5a\u002B2DgInxxqvZFw\u002BjnmRaOKrdkvmTls="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2504"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u002240ODAz5yo73E5a\u002B2DgInxxqvZFw\u002BjnmRaOKrdkvmTls=\u0022"},{"Name":"Last-Modified","Value":"Tue, 11 Mar 2025 15:22:21 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,331 @@
+{
+  "Version": 1,
+  "Hash": "zPFlRsw2wnctKnZ26BMQFo9l6s26LP6ForfFD0arB8M=",
+  "Source": "tehnologiinet",
+  "BasePath": "_content/tehnologiinet",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "tehnologiinet\\wwwroot",
+      "Source": "tehnologiinet",
+      "ContentRoot": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\",
+      "BasePath": "_content/tehnologiinet",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\firstpage.html",
+      "SourceId": "tehnologiinet",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\",
+      "BasePath": "_content/tehnologiinet",
+      "RelativePath": "tictactoe/firstpage#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "i2eqkxkvp9",
+      "Integrity": "uoGmmU7OXRg2gTzHeVYme+MgSMzzKX0IFLiS14p5Tvc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\tictactoe\\firstpage.html"
+    },
+    {
+      "Identity": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\main.js",
+      "SourceId": "tehnologiinet",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\",
+      "BasePath": "_content/tehnologiinet",
+      "RelativePath": "tictactoe/main#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "qejorjjlvq",
+      "Integrity": "vvBfuU4HIhnhDPQzp7FavQGWfRGMu7lAXV4xLgkcdss=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\tictactoe\\main.js"
+    },
+    {
+      "Identity": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\style.css",
+      "SourceId": "tehnologiinet",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\",
+      "BasePath": "_content/tehnologiinet",
+      "RelativePath": "tictactoe/style#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "1f8ydgn2qv",
+      "Integrity": "40ODAz5yo73E5a+2DgInxxqvZFw+jnmRaOKrdkvmTls=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\tictactoe\\style.css"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "tictactoe/firstpage.html",
+      "AssetFile": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\firstpage.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3017"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uoGmmU7OXRg2gTzHeVYme+MgSMzzKX0IFLiS14p5Tvc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Mar 2025 21:18:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-uoGmmU7OXRg2gTzHeVYme+MgSMzzKX0IFLiS14p5Tvc="
+        }
+      ]
+    },
+    {
+      "Route": "tictactoe/firstpage.i2eqkxkvp9.html",
+      "AssetFile": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\firstpage.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3017"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uoGmmU7OXRg2gTzHeVYme+MgSMzzKX0IFLiS14p5Tvc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Mar 2025 21:18:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "i2eqkxkvp9"
+        },
+        {
+          "Name": "label",
+          "Value": "tictactoe/firstpage.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-uoGmmU7OXRg2gTzHeVYme+MgSMzzKX0IFLiS14p5Tvc="
+        }
+      ]
+    },
+    {
+      "Route": "tictactoe/main.js",
+      "AssetFile": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\main.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8573"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vvBfuU4HIhnhDPQzp7FavQGWfRGMu7lAXV4xLgkcdss=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Mar 2025 08:31:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-vvBfuU4HIhnhDPQzp7FavQGWfRGMu7lAXV4xLgkcdss="
+        }
+      ]
+    },
+    {
+      "Route": "tictactoe/main.qejorjjlvq.js",
+      "AssetFile": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\main.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8573"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vvBfuU4HIhnhDPQzp7FavQGWfRGMu7lAXV4xLgkcdss=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Mar 2025 08:31:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qejorjjlvq"
+        },
+        {
+          "Name": "label",
+          "Value": "tictactoe/main.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-vvBfuU4HIhnhDPQzp7FavQGWfRGMu7lAXV4xLgkcdss="
+        }
+      ]
+    },
+    {
+      "Route": "tictactoe/style.1f8ydgn2qv.css",
+      "AssetFile": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\style.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2504"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"40ODAz5yo73E5a+2DgInxxqvZFw+jnmRaOKrdkvmTls=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Mar 2025 15:22:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1f8ydgn2qv"
+        },
+        {
+          "Name": "label",
+          "Value": "tictactoe/style.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-40ODAz5yo73E5a+2DgInxxqvZFw+jnmRaOKrdkvmTls="
+        }
+      ]
+    },
+    {
+      "Route": "tictactoe/style.css",
+      "AssetFile": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\style.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2504"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"40ODAz5yo73E5a+2DgInxxqvZFw+jnmRaOKrdkvmTls=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Mar 2025 15:22:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-40ODAz5yo73E5a+2DgInxxqvZFw+jnmRaOKrdkvmTls="
+        }
+      ]
+    }
+  ]
+}
