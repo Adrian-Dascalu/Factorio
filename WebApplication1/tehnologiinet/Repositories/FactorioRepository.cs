@@ -54,6 +54,29 @@ public class FactorioRepository: IFactorioRepository
         }
 
         var json = File.ReadAllText(file_path);
+        var jsonData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, int>>>(json);
+
+        var productionData = new List<Production>();
+
+        foreach (var item in jsonData)
+        {
+            var itemName = item.Key;
+            var samples = item.Value;
+
+            var totalQuantity = 0;
+            foreach (var sample in samples)
+            {
+                totalQuantity += sample.Value;
+            }
+
+            productionData.Add(new Production
+            {
+                ItemName = itemName,
+                TotalQuantity = totalQuantity
+            });
+        }
+        
+
         return JsonSerializer.Deserialize<List<Production>>(json) ?? new List<Production>();
     }
 

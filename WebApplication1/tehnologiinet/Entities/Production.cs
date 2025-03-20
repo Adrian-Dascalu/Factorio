@@ -19,4 +19,6 @@ public class Production
     public int Losses { get; set; }
     public string? Username { get; set; }
     public Items Item { get; set; }
+    public string ItemName { get; set; }
+    public int TotalQuantity { get; set; }
 }
