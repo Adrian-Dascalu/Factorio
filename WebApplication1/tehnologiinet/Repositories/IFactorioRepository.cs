@@ -6,9 +6,9 @@ public interface IFactorioRepository
 {
     List<Production> GetAllProduction();
     List<Consumption> GetAllConsumption();
-    Factorio GetProductionById(long Id);
-    Factorio GetConsumptionById(long Id);
-    Factorio GetProductionByItem(string item);
-    Factorio GetConsumptionByItem(string item);
+    Production GetProductionById(long Id);
+    Consumption GetConsumptionById(long Id);
+    Production GetProductionByItem(Items item);
+    Consumption GetConsumptionByItem(Items item);
     void UpdateProduction(Factorio updatedProduction);
 }

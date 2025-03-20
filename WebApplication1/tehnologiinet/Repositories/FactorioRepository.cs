@@ -16,22 +16,22 @@ public class FactorioRepository: IFactorioRepository
         return GetAllConsumptionFromDb();
     }
 
-    public Factorio GetProductionById(long Id)
+    public Production GetProductionById(long Id)
     {
         return GetAllProductionFromDb().FirstOrDefault(x => x.Id == Id)!;
     }
 
-    public Factorio GetConsumptionById(long Id)
+    public Consumption GetConsumptionById(long Id)
     {
         return GetAllConsumptionFromDb().FirstOrDefault(x => x.Id == Id)!;
     }
 
-    public Factorio GetProductionByItem(string item)
+    public Production GetProductionByItem(Items item)
     {
         return GetAllProductionFromDb().FirstOrDefault(x => x.Item == item)!;
     }
 
-    public Factorio GetConsumptionByItem(string item)
+    public Consumption GetConsumptionByItem(Items item)
     {
         return GetAllConsumptionFromDb().FirstOrDefault(x => x.Item == item)!;
     }
@@ -110,7 +110,7 @@ public class FactorioRepository: IFactorioRepository
         return JsonSerializer.Deserialize<List<Student>>(json) ?? new List<Student>();
     }
     
-     private List<Student> GetAllStudentsFromDb()
+    private List<Student> GetAllStudentsFromDb()
         {
            List<Student> studentsRetrieved = new List<Student>();
            
@@ -187,4 +187,20 @@ public class FactorioRepository: IFactorioRepository
             
             return studentsRetrieved;
         }
+
+    private List<Production> GetAllProductionFromDb()
+    {
+        using(var db = new AppDbContext())
+        {
+            return db.Productions.ToList();
+        }
+    }
+
+    private List<Consumption> GetAllConsumptionFromDb()
+    {
+        using(var db = new AppDbContext())
+        {
+            return db.Consumptions.ToList();
+        }
+    }
 }
