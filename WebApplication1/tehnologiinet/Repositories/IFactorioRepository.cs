@@ -11,4 +11,6 @@ public interface IFactorioRepository
     Production GetProductionByItem(Items item);
     Consumption GetConsumptionByItem(Items item);
     void UpdateProduction(Factorio updatedProduction);
+
+    
 }

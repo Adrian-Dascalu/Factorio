@@ -1,16 +1,25 @@
 using Microsoft.EntityFrameworkCore;
+using tehnologiinet.Entities;
 
-namespace tehnologiinet.Repositories;
+namespace tehnologiinet;
 
 public class AppDbContext : DbContext
 {
-    public AppDbContext(DbContextOptions options) : base(options)
+    public AppDbContext()
+    {
+        
+    }
+
+    public AppDbContext(DbContextOptions<DbContext> options) : base(options)
     {
         //add john to database
         //var user = new User { Name = "John", UserName =  "john_doe" , Loses = 0, Wins = 0};
         //var userRepository = new UserRepository(this);
         //userRepository.AddUser(user);
     }
+
+    public DbSet<Production> Productions { get; set; }
+    public DbSet<Consumption> Consumptions { get; set; }
     
     public DbSet<User> Users { get; set; }
 

@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IMyFirstServiceInterface, MyFirstService>();
-builder.Services.AddScoped<IStudentsRepository, StudentsRepository>();
+builder.Services.AddScoped<IFactorioRepository, FactorioRepository>();
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseNpgsql("Host=localhost, Database=factorio, Username=postgres, Password=postgres");

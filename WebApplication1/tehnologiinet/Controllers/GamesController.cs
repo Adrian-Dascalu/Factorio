@@ -1,6 +1,11 @@
 using Microsoft.AspNetCore.Cors;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using tehnologiinet.Repositories;
+using tehnologiinet.Entities;
+//using tehnologiinet.Models;
+
+namespace tehnologiinet.Controllers;
 
 [Route("Factorio")]
 [ApiController]
@@ -8,15 +13,15 @@ using tehnologiinet.Repositories;
 public class GamesController : ControllerBase
 {
     
-    private readonly IStudentsRepository _studentsRepository;
+    private readonly IFactorioRepository _factorioRepository;
 
     // connect to database
     private readonly AppDbContext _context;
 
     // Injecting repository via constructor
-    public GamesController(IStudentsRepository studentsRepository, AppDbContext context)
+    public GamesController(IFactorioRepository factorioRepository, AppDbContext context)
     {
-        _studentsRepository = studentsRepository;
+        _factorioRepository = factorioRepository;
         _context = context;
     }
 
@@ -27,64 +32,33 @@ public class GamesController : ControllerBase
         return PhysicalFile(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/tictactoe", "firstpage.html"), "text/html");
     }
 
-    [HttpPost("update-result")]
-    public IActionResult UpdateResult([FromBody] MatchResult result)
+    /*[HttpGet]
+    public IActionResult FilterItemsByType([FromQuery] string type)
     {
-        Console.WriteLine("Received update-result request");
+        var items = _factorioRepository.FilterItemsByType(type);
+        if (items.Count == 0)
+        {
+            return NotFound();
+        }
+        return Ok(items);
+    }*/
 
-        var student = _studentsRepository.GetStudentByUsername(result.Username!);
+    //[HttpPost("update-result")]
+    //public IActionResult UpdateResult([FromBody] MatchResult result)
+    //{
+       // Console.WriteLine("Received update-result request");
+
+       // var factorio = _factorioRepository.GetFactorioByName(result.Name!);
         
         //if (student == null)
         //{
             //return NotFound("Student not found");
         //}
-        
-
-        if (result.Win == 1)
-        {
-            //student.Wins++;
-
-            // increase the win in the database User table
-            var user = _context.Users.FirstOrDefault(u => u.UserName == result.Username);
-            if (user != null)
-            {
-                user.Wins++;
-                _context.SaveChanges();
-            }
-            else
-            {
-                //else add user by username
-                var newUser = new User { Name = result.Username, UserName = result.Username, Loses = 0, Wins = 1 };
-                var userRepository = new UserRepository(_context);
-                userRepository.AddUser(newUser);
-                _context.SaveChanges();
-            }
-        }
-        else if (result.Lose == 1)
-        {
-            //student.Losses++;
-
-            // increase the lose in the database User table
-            var user = _context.Users.FirstOrDefault(u => u.UserName == result.Username);
-            if (user != null)
-            {
-                user.Loses++;
-                _context.SaveChanges();
-            }
-            else
-            {
-                //else add user by username
-                var newUser = new User { Name = result.Username, UserName = result.Username, Loses = 1, Wins = 0 };
-                var userRepository = new UserRepository(_context);
-                userRepository.AddUser(newUser);
-                _context.SaveChanges();
-            }
-        }
 
         //_studentsRepository.UpdateStudent(student); // Ensure this updates the data source
 
-        return Ok(User);
-    }
+       // return Ok(User);
+    //}
 
     // DTO to match the expected JSON body
     public class MatchResult

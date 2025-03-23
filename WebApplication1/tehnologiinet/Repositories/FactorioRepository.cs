@@ -104,12 +104,12 @@ public class FactorioRepository: IFactorioRepository
 
         var json = File.ReadAllText(file_path);
 
-        var recipe = json['recipe'];
+        //var recipe = json['recipe'];
 
         return JsonSerializer.Deserialize<List<Recipies>>(json) ?? new List<Recipies>();
     }
 
-    public void UpdateStudent(Student updatedStudent)
+    /*public void UpdateStudent(Student updatedStudent)
     {
         var students = LoadStudentsFromJson();
         var student = students.FirstOrDefault(s => s.Id == updatedStudent.Id);
@@ -120,9 +120,9 @@ public class FactorioRepository: IFactorioRepository
             student.Losses = updatedStudent.Losses;
             SaveStudentsToJson(students); // ✅ Save changes to file
         }
-    }
+    }*/
 
-    private List<Student> LoadStudentsFromJson()
+    /*private List<Student> LoadStudentsFromJson()
     {
         if (!File.Exists("students.json"))
         {
@@ -131,85 +131,85 @@ public class FactorioRepository: IFactorioRepository
 
         var json = File.ReadAllText("students.json");
         return JsonSerializer.Deserialize<List<Student>>(json) ?? new List<Student>();
-    }
+    }*/
     
-    private List<Student> GetAllStudentsFromDb()
+    /*private List<Student> GetAllStudentsFromDb()
+    {
+        List<Student> studentsRetrieved = new List<Student>();
+        
+        var student1 = new Student
         {
-           List<Student> studentsRetrieved = new List<Student>();
-           
-           var student1 = new Student
-           {
-               Id = 1,
-               FirstName = "John",
-               LastName = "Doe",
-               CNP = "1234567890123",
-               Email = "student@student.ro",
-               PhoneNumber = "0722222222",
-               Address = "Str. Studentilor",
-               City = "Iasi",
-               Country = "Romania",
-               PostalCode = "700000",
-               University = "Universitatea Tehnica",
-               Faculty = "Automatica si Calculatoare",
-               Specialization = "Calculatoare",
-               Wins = 0,
-               Losses = 0,
-               Username = "john_doe",
-           };
-           
-           var student2 = new Student
-           {
-               Id = 2,
-               FirstName = "Jane",
-               LastName = "Doe",
-               CNP = "1234567890123",
-               Email = "jane.doe@student.ucv.ro",
-               PhoneNumber = "0000000000",
-               Address = "Str. Studentilor nr. 1",
-               City = "Craiova",
-               Country = "Romania",
-               PostalCode = "700000",
-               University = "Universitatea Tehnica",
-               Faculty = "Automatica si Calculatoare",
-               Specialization = "Calculatoare",
-               Wins = 0,
-               Losses = 0,
-               Username = "jane_doe",
-           };
-           
-           var student3 = new Student
-           {
-               Id = 3,
-               FirstName = "Jane",
-               LastName = "Popescu",
-               CNP = "1234567890123",
-               Email = "jane.popescu@student.ucv.ro",
-               PhoneNumber = "0000000000",
-               Address = "Str. Studentilor nr. 3",
-               City = "Craiova",
-               Country = "Romania",
-               PostalCode = "700000",
-               University = "Universitatea Tehnica",
-               Faculty = "Automatica si Calculatoare",
-               Specialization = "Automatica si Informatica Aplicata",
-               Wins = 0,
-               Losses = 0,
-               Username = "jane_popescu",
-           };
-           
-            studentsRetrieved.Add(student1);
-            studentsRetrieved.Add(student2); 
-            studentsRetrieved.Add(student3);
+            Id = 1,
+            FirstName = "John",
+            LastName = "Doe",
+            CNP = "1234567890123",
+            Email = "student@student.ro",
+            PhoneNumber = "0722222222",
+            Address = "Str. Studentilor",
+            City = "Iasi",
+            Country = "Romania",
+            PostalCode = "700000",
+            University = "Universitatea Tehnica",
+            Faculty = "Automatica si Calculatoare",
+            Specialization = "Calculatoare",
+            Wins = 0,
+            Losses = 0,
+            Username = "john_doe",
+        };
+        
+        var student2 = new Student
+        {
+            Id = 2,
+            FirstName = "Jane",
+            LastName = "Doe",
+            CNP = "1234567890123",
+            Email = "jane.doe@student.ucv.ro",
+            PhoneNumber = "0000000000",
+            Address = "Str. Studentilor nr. 1",
+            City = "Craiova",
+            Country = "Romania",
+            PostalCode = "700000",
+            University = "Universitatea Tehnica",
+            Faculty = "Automatica si Calculatoare",
+            Specialization = "Calculatoare",
+            Wins = 0,
+            Losses = 0,
+            Username = "jane_doe",
+        };
+        
+        var student3 = new Student
+        {
+            Id = 3,
+            FirstName = "Jane",
+            LastName = "Popescu",
+            CNP = "1234567890123",
+            Email = "jane.popescu@student.ucv.ro",
+            PhoneNumber = "0000000000",
+            Address = "Str. Studentilor nr. 3",
+            City = "Craiova",
+            Country = "Romania",
+            PostalCode = "700000",
+            University = "Universitatea Tehnica",
+            Faculty = "Automatica si Calculatoare",
+            Specialization = "Automatica si Informatica Aplicata",
+            Wins = 0,
+            Losses = 0,
+            Username = "jane_popescu",
+        };
+        
+        studentsRetrieved.Add(student1);
+        studentsRetrieved.Add(student2); 
+        studentsRetrieved.Add(student3);
 
-            if (!File.Exists("students.json"))
-                SaveStudentsToJson(studentsRetrieved);
-            else
-            {
-                studentsRetrieved = LoadStudentsFromJson();
-            }
-            
-            return studentsRetrieved;
+        if (!File.Exists("students.json"))
+            SaveStudentsToJson(studentsRetrieved);
+        else
+        {
+            studentsRetrieved = LoadStudentsFromJson();
         }
+        
+        return studentsRetrieved;
+    }*/
 
     private List<Production> GetAllProductionFromDb()
     {
@@ -222,7 +222,7 @@ public class FactorioRepository: IFactorioRepository
     private List<Consumption> GetAllConsumptionFromDb()
     {
         using(var db = new AppDbContext())
-        {
+        {;
             return db.Consumptions.ToList();
         }
     }
