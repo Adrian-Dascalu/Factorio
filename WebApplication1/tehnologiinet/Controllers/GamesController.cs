@@ -32,6 +32,13 @@ public class GamesController : ControllerBase
         return PhysicalFile(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/tictactoe", "firstpage.html"), "text/html");
     }
 
+    [HttpGet("UpdateProduction")]
+    public IActionResult UpdateProduction()
+    {
+        var productions = _factorioRepository.GetAllProduction();
+        return Ok(productions);
+    }
+
     /*[HttpGet]
     public IActionResult FilterItemsByType([FromQuery] string type)
     {

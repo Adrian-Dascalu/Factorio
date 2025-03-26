@@ -18,6 +18,7 @@ public class FactorioRepository: IFactorioRepository
 
     public Production GetProductionById(long Id)
     {
+        UpdateProduction(new Factorio());
         return GetAllProductionFromDb().FirstOrDefault(x => x.Id == Id)!;
     }
 
@@ -26,22 +27,20 @@ public class FactorioRepository: IFactorioRepository
         return GetAllConsumptionFromDb().FirstOrDefault(x => x.Id == Id)!;
     }
 
-    public Production GetProductionByItem(Items item)
+    public Production GetProductionByItem(Item Items)
     {
-        return GetAllProductionFromDb().FirstOrDefault(x => x.Item == item)!;
+        return GetAllProductionFromDb().FirstOrDefault(x => x.Items == Items)!;
     }
 
-    public Consumption GetConsumptionByItem(Items item)
+    public Consumption GetConsumptionByItem(Item Items)
     {
-        return GetAllConsumptionFromDb().FirstOrDefault(x => x.Item == item)!;
+        return GetAllConsumptionFromDb().FirstOrDefault(x => x.Items == Items)!;
     }
 
     public void UpdateProduction(Factorio updatedProduction)
     {
         var productions = LoadProductionFromJson();
         var production = productions.FirstOrDefault(s => s.Id == updatedProduction.Id);
-
-
     }
 
     private List<Production> LoadProductionFromJson()
@@ -76,6 +75,7 @@ public class FactorioRepository: IFactorioRepository
             });
         }
         
+        // return productionData;
 
         return JsonSerializer.Deserialize<List<Production>>(json) ?? new List<Production>();
     }
@@ -93,20 +93,20 @@ public class FactorioRepository: IFactorioRepository
         return JsonSerializer.Deserialize<List<Consumption>>(json) ?? new List<Consumption>();
     }
 
-    private List<Recipies> LoadRecipiesFromJson()
+    private List<Recipe> LoadRecipesFromJson()
     {
         var file_path = "../Factorio/data-raw-dump.json";
         
         if (!File.Exists(file_path))
         {
-            return new List<Recipies>(); // Return empty list if file does not exist
+            return new List<Recipe>(); // Return empty list if file does not exist
         }
 
         var json = File.ReadAllText(file_path);
 
         //var recipe = json['recipe'];
 
-        return JsonSerializer.Deserialize<List<Recipies>>(json) ?? new List<Recipies>();
+        return JsonSerializer.Deserialize<List<Recipe>>(json) ?? new List<Recipe>();
     }
 
     /*public void UpdateStudent(Student updatedStudent)

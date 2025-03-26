@@ -8,9 +8,7 @@ public interface IFactorioRepository
     List<Consumption> GetAllConsumption();
     Production GetProductionById(long Id);
     Consumption GetConsumptionById(long Id);
-    Production GetProductionByItem(Items item);
-    Consumption GetConsumptionByItem(Items item);
+    Production GetProductionByItem(Item Items);
+    Consumption GetConsumptionByItem(Item Item);
     void UpdateProduction(Factorio updatedProduction);
-
-    
 }

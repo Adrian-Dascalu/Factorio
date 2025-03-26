@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zPFlRsw2wnctKnZ26BMQFo9l6s26LP6ForfFD0arB8M=",
+  "Hash": "S4moshJFGazP97Ma0P9UOcxc/7MZnNoew9YN9qbNorI=",
   "Source": "tehnologiinet",
   "BasePath": "_content/tehnologiinet",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "tehnologiinet\\wwwroot",
       "Source": "tehnologiinet",
-      "ContentRoot": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\adiad\\Desktop\\factorio\\WebApplication1\\tehnologiinet\\wwwroot\\",
       "BasePath": "_content/tehnologiinet",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\firstpage.html",
+      "Identity": "C:\\Users\\adiad\\Desktop\\factorio\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\firstpage.html",
       "SourceId": "tehnologiinet",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\adiad\\Desktop\\factorio\\WebApplication1\\tehnologiinet\\wwwroot\\",
       "BasePath": "_content/tehnologiinet",
       "RelativePath": "tictactoe/firstpage#[.{fingerprint}]?.html",
       "AssetKind": "All",
@@ -38,10 +38,10 @@
       "OriginalItemSpec": "wwwroot\\tictactoe\\firstpage.html"
     },
     {
-      "Identity": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\main.js",
+      "Identity": "C:\\Users\\adiad\\Desktop\\factorio\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\main.js",
       "SourceId": "tehnologiinet",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\adiad\\Desktop\\factorio\\WebApplication1\\tehnologiinet\\wwwroot\\",
       "BasePath": "_content/tehnologiinet",
       "RelativePath": "tictactoe/main#[.{fingerprint}]?.js",
       "AssetKind": "All",
@@ -59,10 +59,10 @@
       "OriginalItemSpec": "wwwroot\\tictactoe\\main.js"
     },
     {
-      "Identity": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\style.css",
+      "Identity": "C:\\Users\\adiad\\Desktop\\factorio\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\style.css",
       "SourceId": "tehnologiinet",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\adiad\\Desktop\\factorio\\WebApplication1\\tehnologiinet\\wwwroot\\",
       "BasePath": "_content/tehnologiinet",
       "RelativePath": "tictactoe/style#[.{fingerprint}]?.css",
       "AssetKind": "All",
@@ -83,7 +83,7 @@
   "Endpoints": [
     {
       "Route": "tictactoe/firstpage.html",
-      "AssetFile": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\firstpage.html",
+      "AssetFile": "C:\\Users\\adiad\\Desktop\\factorio\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\firstpage.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -120,7 +120,7 @@
     },
     {
       "Route": "tictactoe/firstpage.i2eqkxkvp9.html",
-      "AssetFile": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\firstpage.html",
+      "AssetFile": "C:\\Users\\adiad\\Desktop\\factorio\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\firstpage.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -165,7 +165,7 @@
     },
     {
       "Route": "tictactoe/main.js",
-      "AssetFile": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\main.js",
+      "AssetFile": "C:\\Users\\adiad\\Desktop\\factorio\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\main.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -202,7 +202,7 @@
     },
     {
       "Route": "tictactoe/main.qejorjjlvq.js",
-      "AssetFile": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\main.js",
+      "AssetFile": "C:\\Users\\adiad\\Desktop\\factorio\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\main.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -247,7 +247,7 @@
     },
     {
       "Route": "tictactoe/style.1f8ydgn2qv.css",
-      "AssetFile": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\style.css",
+      "AssetFile": "C:\\Users\\adiad\\Desktop\\factorio\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\style.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -292,7 +292,7 @@
     },
     {
       "Route": "tictactoe/style.css",
-      "AssetFile": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\style.css",
+      "AssetFile": "C:\\Users\\adiad\\Desktop\\factorio\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\style.css",
       "Selectors": [],
       "ResponseHeaders": [
         {

@@ -20,13 +20,45 @@ public class AppDbContext : DbContext
 
     public DbSet<Production> Productions { get; set; }
     public DbSet<Consumption> Consumptions { get; set; }
-    
-    public DbSet<User> Users { get; set; }
+    public DbSet<Item> Items { get; set; }
+    public DbSet<Recipe> Recipes { get; set; }
+    public DbSet<Ingredient> Ingredients { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        options.UseNpgsql("Host=localhost;Database=postgres;Username=postgres;Password=postgres");
+        options.UseNpgsql("Host=localhost;Database=factorio;Username=postgres;Password=postgres");
     }
+
+    /*protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Production>()
+            .HasOne(p => p.Items)
+            .WithMany()
+            .HasForeignKey(p => p.ItemId);
+
+        modelBuilder.Entity<Consumption>()
+            .HasOne(c => c.Items)
+            .WithMany()
+            .HasForeignKey(c => c.ItemId);
+
+        modelBuilder.Entity<Recipe>()
+            .HasOne(r => r.ResultItem)
+            .WithMany(i => i.Recipes)
+            .HasForeignKey(r => r.ResultItemId);
+
+        modelBuilder.Entity<Ingredient>()
+            .HasKey(i => new { i.RecipeId, i.IngredientItemId });
+
+        modelBuilder.Entity<Ingredient>()
+            .HasOne(i => i.Recipe)
+            .WithMany(r => r.Ingredients)
+            .HasForeignKey(i => i.RecipeId);
+
+        modelBuilder.Entity<Ingredient>()
+            .HasOne(i => i.IngredientItem)
+            .WithMany()
+            .HasForeignKey(i => i.IngredientItemId);
+    }*/
 
     public class Post
     {
@@ -35,33 +67,7 @@ public class AppDbContext : DbContext
         public string Password { get; set; }
         public string Email { get; set; }
     }
-    
+
     public DbSet<Post> Posts { get; set; }
     
-}
-
-public class User
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string UserName { get; set; }
-    public int Wins { get; set; }
-    public int Loses { get; set; }
-}
-
-//add user to database
-public class UserRepository
-{
-    private readonly AppDbContext _context;
-
-    public UserRepository(AppDbContext context)
-    {
-        _context = context;
-    }
-
-    public void AddUser(User user)
-    {
-        _context.Users.Add(user);
-        _context.SaveChanges();
-    }
 }

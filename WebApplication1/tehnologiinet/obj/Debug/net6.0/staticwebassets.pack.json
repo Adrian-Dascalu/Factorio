@@ -1,15 +1,15 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\firstpage.html",
+      "Id": "C:\\Users\\adiad\\Desktop\\factorio\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\firstpage.html",
       "PackagePath": "staticwebassets\\tictactoe\\firstpage.html"
     },
     {
-      "Id": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\main.js",
+      "Id": "C:\\Users\\adiad\\Desktop\\factorio\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\main.js",
       "PackagePath": "staticwebassets\\tictactoe\\main.js"
     },
     {
-      "Id": "C:\\Users\\adiad\\Desktop\\tehnologii .net\\tehnologiidotnet\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\style.css",
+      "Id": "C:\\Users\\adiad\\Desktop\\factorio\\WebApplication1\\tehnologiinet\\wwwroot\\tictactoe\\style.css",
       "PackagePath": "staticwebassets\\tictactoe\\style.css"
     },
     {

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using tehnologiinet.Repositories;
+using tehnologiinet;
 
 #nullable disable
 
@@ -21,7 +21,7 @@ namespace tehnologiinet.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("tehnologiinet.Repositories.AppDbContext+Post", b =>
+            modelBuilder.Entity("tehnologiinet.AppDbContext+Post", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -46,31 +46,175 @@ namespace tehnologiinet.Migrations
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("tehnologiinet.Repositories.User", b =>
+            modelBuilder.Entity("tehnologiinet.Entities.Consumption", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("ItemId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("ItemName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<double>("Value")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ItemId");
+
+                    b.ToTable("Consumptions");
+                });
+
+            modelBuilder.Entity("tehnologiinet.Entities.Ingredient", b =>
+                {
+                    b.Property<long>("RecipeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("IngredientItemId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("Amount")
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.HasKey("RecipeId", "IngredientItemId");
 
-                    b.Property<int>("Loses")
-                        .HasColumnType("integer");
+                    b.HasIndex("IngredientItemId");
+
+                    b.ToTable("Ingredients");
+                });
+
+            modelBuilder.Entity("tehnologiinet.Entities.Item", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("UserName")
+                    b.Property<double>("Value")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Items");
+                });
+
+            modelBuilder.Entity("tehnologiinet.Entities.Production", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("ItemId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("ItemName")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("Wins")
+                    b.Property<int>("TotalQuantity")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.HasIndex("ItemId");
+
+                    b.ToTable("Productions");
+                });
+
+            modelBuilder.Entity("tehnologiinet.Entities.Recipe", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("ResultItemId")
+                        .HasColumnType("bigint");
+
+                    b.Property<double>("Value")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ResultItemId");
+
+                    b.ToTable("Recipes");
+                });
+
+            modelBuilder.Entity("tehnologiinet.Entities.Consumption", b =>
+                {
+                    b.HasOne("tehnologiinet.Entities.Item", "Items")
+                        .WithMany()
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("tehnologiinet.Entities.Ingredient", b =>
+                {
+                    b.HasOne("tehnologiinet.Entities.Item", "IngredientItem")
+                        .WithMany()
+                        .HasForeignKey("IngredientItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("tehnologiinet.Entities.Recipe", "Recipe")
+                        .WithMany("Ingredients")
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("IngredientItem");
+
+                    b.Navigation("Recipe");
+                });
+
+            modelBuilder.Entity("tehnologiinet.Entities.Production", b =>
+                {
+                    b.HasOne("tehnologiinet.Entities.Item", "Items")
+                        .WithMany()
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("tehnologiinet.Entities.Recipe", b =>
+                {
+                    b.HasOne("tehnologiinet.Entities.Item", "ResultItem")
+                        .WithMany("Recipes")
+                        .HasForeignKey("ResultItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ResultItem");
+                });
+
+            modelBuilder.Entity("tehnologiinet.Entities.Item", b =>
+                {
+                    b.Navigation("Recipes");
+                });
+
+            modelBuilder.Entity("tehnologiinet.Entities.Recipe", b =>
+                {
+                    b.Navigation("Ingredients");
                 });
 #pragma warning restore 612, 618
         }
