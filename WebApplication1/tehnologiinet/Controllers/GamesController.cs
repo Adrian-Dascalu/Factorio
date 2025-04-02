@@ -45,6 +45,21 @@ public class GamesController : ControllerBase
         return Ok(_factorioRepository.LoadRecipesFromJson());
     }
 
+    [HttpGet("LoadItemsFromJson")]
+    public IActionResult LoadItems()
+    {
+        using (var db = new AppDbContext())
+        {
+            foreach (var item in _factorioRepository.LoadItemsFromJson())
+            {
+                    db.Items.Add(item);
+            }
+
+            db.SaveChanges();
+        }
+        return Ok(_factorioRepository.LoadItemsFromJson());
+    }
+
 
     /*[HttpGet]
     public IActionResult FilterItemsByType([FromQuery] string type)

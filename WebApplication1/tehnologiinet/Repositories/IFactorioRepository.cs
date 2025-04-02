@@ -10,7 +10,8 @@ public interface IFactorioRepository
     Consumption GetConsumptionById(long Id);
     Production GetProductionByItem(Item Items);
     Consumption GetConsumptionByItem(Item Item);
-    Production LoadProductionFromJson();
+    List<Production> LoadProductionFromJson();
     void UpdateProduction(Factorio updatedProduction);
     Recipe LoadRecipesFromJson();
+    List<Item> LoadItemsFromJson();
 }

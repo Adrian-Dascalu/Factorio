@@ -45,7 +45,7 @@ public class FactorioRepository: IFactorioRepository
         var production = GetProductionById(updatedProduction.Id);
     }
 
-    public Production LoadProductionFromJson()
+    public List<Production> LoadProductionFromJson()
     {
         var file_path = "Factorio/production-nauvis-10min.json";
         
@@ -56,12 +56,12 @@ public class FactorioRepository: IFactorioRepository
             Item item = new Item();
             item.Id = 1;
             item.Name = empty;
-            item.Recipe = null;
+            //item.Recipe = null;
             Production production = new Production();
             production.Id = 1;
             production.Item = item;
             
-            return  production;
+            //return  production;
             
             //return new List<Production>(); // Return empty list if file does not exist
             
@@ -73,28 +73,80 @@ public class FactorioRepository: IFactorioRepository
 
         //get every item from json (data from json is {item1:{sample1: 1, sample2:2}, item2:{sample1:1, sample2:2}})
 
+        // test is a dictionary with the keys of the json data
+        var keys = jsonData.Keys;
+        //wooden chest, iron chest, steel chest, etc
 
-        string test = jsonData.Keys.FirstOrDefault() ?? "empty";
-        Item testItem = new Item();
-        testItem.Id = 1;
-        testItem.Name = test;
-        testItem.Recipe = null;
-        Production production1 = new Production();
-        production1.Id = 1;
-        production1.Item = testItem;
+        foreach(var key in keys) // wooden chest, iron chest
+        {
+            //get the value of the item
+            var dictionary_sample = jsonData[key];
+            
+            var samples_keys = dictionary_sample.Keys; //id = where item_name == key
 
-        //return production1
+            var total_value = 0;
+
+            foreach(var sample_key in samples_keys)
+            {
+                //get the value of the key
+                var val = dictionary_sample[sample_key];
+                //add the value to the total value
+                total_value += val;
+            }
+
+            
+
+            //create a new production object
+            Production production = new Production();
+            production.Id = 1;
+            production.Item = new Item();
+            production.Item.Id = 1;
+            production.Item.Name = key;
+            //production.Item.Recipe = null;
+            production.Item.Value = total_value;
+            
+            //add the production to the list
+            productionData.Add(production);
+        }
+
         
-        return production1;
+        return productionData;
+    }
 
-        // return productionData;
-    
+    public List<Item> LoadItemsFromJson()
+    {
+        var file_path = "Factorio/item.json";
+        
+        if (!File.Exists(file_path))
+        {
+            return new List<Item>(); // Return empty list if file does not exist
+        }
+
+        var json = File.ReadAllText(file_path);
+        
+        var jsonData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, object>>>(json);
+
+        var itemData = new List<Item>();
+
+        var keys = jsonData.Keys;
+
+        foreach(var key in keys)
+        {
+            var dictionary_sample = jsonData[key];
+            var item = new Item();
+            item.Name = key;
+            item.Value = 1;
+            //item.Recipe = null;
+            itemData.Add(item);
+        }
+
+        return itemData;
     }
 
 // private List<Recipe> LoadRecipesFromJson()
     public Recipe LoadRecipesFromJson()
     {
-        var file_path = "Factorio/data-raw-dump.json";
+        var file_path = "Factorio/recipe.json";
         
         if (!File.Exists(file_path))
         {
@@ -118,8 +170,12 @@ public class FactorioRepository: IFactorioRepository
 //     },
         // json data
         var jsonData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, object>>>(json);
-        var recipeData = new List<Recipe>();
 
+        //search for item in json data
+        var item = jsonData.FirstOrDefault(x => x.Key == "item");
+        item.Value.TryGetValue("parameter-0", out var parameter0);
+        
+        
         var recipe = new Recipe();
         recipe.Id = 1;
         recipe.Ingredients = new List<Ingredient>();
