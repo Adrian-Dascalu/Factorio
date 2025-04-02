@@ -1,6 +1,8 @@
+using System.Drawing.Printing;
 using tehnologiinet.Entities;
 using System.Text.Json;
 using System.Runtime.Versioning;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace tehnologiinet.Repositories;
 
@@ -27,57 +29,104 @@ public class FactorioRepository: IFactorioRepository
         return GetAllConsumptionFromDb().FirstOrDefault(x => x.Id == Id)!;
     }
 
-    public Production GetProductionByItem(Item Items)
+    public Production GetProductionByItem(Item Item)
     {
-        return GetAllProductionFromDb().FirstOrDefault(x => x.Items == Items)!;
+        return GetAllProductionFromDb().FirstOrDefault(x => x.Item == Item)!;
     }
 
-    public Consumption GetConsumptionByItem(Item Items)
+    public Consumption GetConsumptionByItem(Item Item)
     {
-        return GetAllConsumptionFromDb().FirstOrDefault(x => x.Items == Items)!;
+        return GetAllConsumptionFromDb().FirstOrDefault(x => x.Item == Item)!;
     }
 
     public void UpdateProduction(Factorio updatedProduction)
     {
         var productions = LoadProductionFromJson();
-        var production = productions.FirstOrDefault(s => s.Id == updatedProduction.Id);
+        var production = GetProductionById(updatedProduction.Id);
     }
 
-    private List<Production> LoadProductionFromJson()
+    public Production LoadProductionFromJson()
     {
-        var file_path = "../Factorio/production-nauvis-10min.json";
+        var file_path = "Factorio/production-nauvis-10min.json";
         
         if (!File.Exists(file_path))
         {
-            return new List<Production>(); // Return empty list if file does not exist
+            //return string empty
+            string empty = "empty";
+            Item item = new Item();
+            item.Id = 1;
+            item.Name = empty;
+            item.Recipe = null;
+            Production production = new Production();
+            production.Id = 1;
+            production.Item = item;
+            
+            return  production;
+            
+            //return new List<Production>(); // Return empty list if file does not exist
+            
         }
 
         var json = File.ReadAllText(file_path);
         var jsonData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, int>>>(json);
-
         var productionData = new List<Production>();
 
-        foreach (var item in jsonData)
-        {
-            var itemName = item.Key;
-            var samples = item.Value;
+        //get every item from json (data from json is {item1:{sample1: 1, sample2:2}, item2:{sample1:1, sample2:2}})
 
-            var totalQuantity = 0;
-            foreach (var sample in samples)
-            {
-                totalQuantity += sample.Value;
-            }
 
-            productionData.Add(new Production
-            {
-                ItemName = itemName,
-                TotalQuantity = totalQuantity
-            });
-        }
+        string test = jsonData.Keys.FirstOrDefault() ?? "empty";
+        Item testItem = new Item();
+        testItem.Id = 1;
+        testItem.Name = test;
+        testItem.Recipe = null;
+        Production production1 = new Production();
+        production1.Id = 1;
+        production1.Item = testItem;
+
+        //return production1
         
-        // return productionData;
+        return production1;
 
-        return JsonSerializer.Deserialize<List<Production>>(json) ?? new List<Production>();
+        // return productionData;
+    
+    }
+
+// private List<Recipe> LoadRecipesFromJson()
+    public Recipe LoadRecipesFromJson()
+    {
+        var file_path = "Factorio/data-raw-dump.json";
+        
+        if (!File.Exists(file_path))
+        {
+            return new Recipe(); // Return empty list if file does not exist
+        }
+
+        var json = File.ReadAllText(file_path);
+//         "recipe": 
+//   {
+//     "recipe-unknown": 
+//     {
+//       "type": "recipe",
+//       "name": "recipe-unknown",
+//       "icon": "__core__/graphics/icons/unknown.png",
+//       "icon_size": 64,
+//       "hidden": true,
+//       "ingredients": 
+//       {},
+//       "results": 
+//       {}
+//     },
+        // json data
+        var jsonData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, object>>>(json);
+        var recipeData = new List<Recipe>();
+
+        var recipe = new Recipe();
+        recipe.Id = 1;
+        recipe.Ingredients = new List<Ingredient>();
+        recipe.Value = 1;
+        recipe.Ingredients.Add(new Ingredient { Id = 1, Amount = 1, ItemId = 1, RecipeId = 1 });
+
+        return jsonData.Keys.FirstOrDefault() != null ? recipe : new Recipe(); // Return empty list if file does not exist
     }
 
     private List<Consumption> LoadConsumptionFromJson()
@@ -93,21 +142,6 @@ public class FactorioRepository: IFactorioRepository
         return JsonSerializer.Deserialize<List<Consumption>>(json) ?? new List<Consumption>();
     }
 
-    private List<Recipe> LoadRecipesFromJson()
-    {
-        var file_path = "../Factorio/data-raw-dump.json";
-        
-        if (!File.Exists(file_path))
-        {
-            return new List<Recipe>(); // Return empty list if file does not exist
-        }
-
-        var json = File.ReadAllText(file_path);
-
-        //var recipe = json['recipe'];
-
-        return JsonSerializer.Deserialize<List<Recipe>>(json) ?? new List<Recipe>();
-    }
 
     /*public void UpdateStudent(Student updatedStudent)
     {

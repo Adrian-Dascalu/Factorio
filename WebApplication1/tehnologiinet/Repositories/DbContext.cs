@@ -59,15 +59,5 @@ public class AppDbContext : DbContext
             .WithMany()
             .HasForeignKey(i => i.IngredientItemId);
     }*/
-
-    public class Post
-    {
-        public int Id { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-    }
-
-    public DbSet<Post> Posts { get; set; }
     
 }

@@ -40,9 +40,17 @@ for surface_name, _ in pairs(game.surfaces) do
     for item_name, item_data in pairs(tbl) do
       json_string = json_string .. "  \"" .. item_name .. "\": {\n"
       for sample_index, count in pairs(item_data) do
-        json_string = json_string .. "    \"" .. sample_index .. "\": " .. tostring(count) .. ",\n"
+        if sample_index == "sample_300" then
+          json_string = json_string .. "    \"" .. sample_index .. "\": " .. tostring(count) .. "\n"
+        else
+          json_string = json_string .. "    \"" .. sample_index .. "\": " .. tostring(count) .. ",\n"
+        end
       end
-      json_string = json_string .. "  },\n"
+      if item_name == "gun-turret" then
+        json_string = json_string .. "  } \n"
+      else
+        json_string = json_string .. "  },\n"
+      end
     end
     json_string = json_string .. "}"
     helpers.write_file("production-" .. surface_name .. "-" .. timescale_name .. ".json", json_string, false)

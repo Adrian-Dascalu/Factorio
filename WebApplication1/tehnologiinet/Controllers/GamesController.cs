@@ -1,3 +1,4 @@
+using System.Drawing.Printing;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
@@ -32,12 +33,18 @@ public class GamesController : ControllerBase
         return PhysicalFile(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/tictactoe", "firstpage.html"), "text/html");
     }
 
-    [HttpGet("UpdateProduction")]
-    public IActionResult UpdateProduction()
+    [HttpGet("LoadProductionFromJson")]
+    public IActionResult LoadProduction()
     {
-        var productions = _factorioRepository.GetAllProduction();
-        return Ok(productions);
+        return Ok(_factorioRepository.LoadProductionFromJson());
     }
+
+    [HttpGet("LoadRecipesFromJson")]
+    public IActionResult LoadRecipes()
+    {
+        return Ok(_factorioRepository.LoadRecipesFromJson());
+    }
+
 
     /*[HttpGet]
     public IActionResult FilterItemsByType([FromQuery] string type)
