@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("tehnologiinet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f88b22946e6945c736a845b41a96ebb8a8c70d1c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9e1e7e114a1ba253d4b23359f588b98ea3ff4add")]
 [assembly: System.Reflection.AssemblyProductAttribute("tehnologiinet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("tehnologiinet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -64,7 +64,6 @@ public class FactorioRepository: IFactorioRepository
             //return  production;
             
             //return new List<Production>(); // Return empty list if file does not exist
-            
         }
 
         var json = File.ReadAllText(file_path);
@@ -94,8 +93,6 @@ public class FactorioRepository: IFactorioRepository
                 total_value += val;
             }
 
-            
-
             //create a new production object
             Production production = new Production();
             production.Id = 1;
@@ -108,7 +105,6 @@ public class FactorioRepository: IFactorioRepository
             //add the production to the list
             productionData.Add(production);
         }
-
         
         return productionData;
     }
@@ -143,46 +139,95 @@ public class FactorioRepository: IFactorioRepository
         return itemData;
     }
 
+    public Item GetItemById(long Id)
+    {
+        return GetAllProductionFromDb().FirstOrDefault(x => x.Item.Id == Id)!.Item;
+    }
+
+    public Item GetItemByName(string name)
+    {
+        return GetAllProductionFromDb().FirstOrDefault(x => x.Item.Name == name)!.Item;
+    }
+
 // private List<Recipe> LoadRecipesFromJson()
-    public Recipe LoadRecipesFromJson()
+    public List<Recipe> LoadRecipesFromJson()
     {
         var file_path = "Factorio/recipe.json";
         
         if (!File.Exists(file_path))
         {
-            return new Recipe(); // Return empty list if file does not exist
+            //return string empty
+            string empty = "empty";
+            Recipe recipe = new Recipe();
+            recipe.Id = 1;
+            recipe.ItemId = 0;
+            recipe.Ingredients = new List<Ingredient>();
+            Ingredient ingredient = new Ingredient();
+            ingredient.Id = 1;
+            ingredient.Amount = 1;
+            ingredient.ItemId = 1;
+            ingredient.RecipeId = 1;
+            
+            //return new List<Production>(); // Return empty list if file does not exist
         }
 
         var json = File.ReadAllText(file_path);
-//         "recipe": 
-//   {
-//     "recipe-unknown": 
-//     {
-//       "type": "recipe",
-//       "name": "recipe-unknown",
-//       "icon": "__core__/graphics/icons/unknown.png",
-//       "icon_size": 64,
-//       "hidden": true,
-//       "ingredients": 
-//       {},
-//       "results": 
-//       {}
-//     },
-        // json data
-        var jsonData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, object>>>(json);
+        var jsonData = JsonSerializer.Deserialize<Dictionary<string, object>>(json);
 
-        //search for item in json data
-        var item = jsonData.FirstOrDefault(x => x.Key == "item");
-        item.Value.TryGetValue("parameter-0", out var parameter0);
-        
-        
-        var recipe = new Recipe();
-        recipe.Id = 1;
-        recipe.Ingredients = new List<Ingredient>();
-        recipe.Value = 1;
-        recipe.Ingredients.Add(new Ingredient { Id = 1, Amount = 1, ItemId = 1, RecipeId = 1 });
+        var recipeData = new List<Recipe>();
 
-        return jsonData.Keys.FirstOrDefault() != null ? recipe : new Recipe(); // Return empty list if file does not exist
+        var keys = jsonData.Keys;
+
+        foreach (var key in keys)
+        {
+            var dictionary_sample = jsonData[key];
+
+            if (key == "ingredients")
+            {
+                var ingredients = new List<Ingredient>();
+
+                var ingredients_key = (List<Dictionary<string, object>>)dictionary_sample;
+                foreach (var ingr_key in ingredients_key)
+                {
+                    var ingredient = new Ingredient();
+
+                    var ingredient_keys = ingr_key.Keys;
+                    foreach (var ingredient_key in ingredient_keys)
+                    {
+                        if (ingredient_key == "name")
+                        {
+                            //get ingr_key id from item id by ingr_key name from db
+                            var ingredientId = GetItemByName(ingr_key[ingredient_key].ToString()).Id;
+                        }
+                        else if (ingredient_key == "amount")
+                        {
+                            var ingredientAmount = ingr_key[ingredient_key];
+                        }
+                    }
+                }
+            }
+            else if (key == "results")
+            {
+                var results = (List<Dictionary<string, object>>)dictionary_sample;
+                foreach (var result in results)
+                {
+                    var result_keys = result.Keys;
+                    foreach (var result_key in result_keys)
+                    {
+                        if (result_key == "amount")
+                        {
+                            var resultAmount = result[result_key];
+                        }
+                    }
+                }
+            }
+            else if (key == "name")
+            {
+                var name = dictionary_sample;
+            }
+        }
+
+        return recipeData;
     }
 
     private List<Consumption> LoadConsumptionFromJson()
@@ -197,7 +242,6 @@ public class FactorioRepository: IFactorioRepository
         var json = File.ReadAllText(file_path);
         return JsonSerializer.Deserialize<List<Consumption>>(json) ?? new List<Consumption>();
     }
-
 
     /*public void UpdateStudent(Student updatedStudent)
     {

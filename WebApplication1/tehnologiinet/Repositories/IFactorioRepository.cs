@@ -12,6 +12,6 @@ public interface IFactorioRepository
     Consumption GetConsumptionByItem(Item Item);
     List<Production> LoadProductionFromJson();
     void UpdateProduction(Factorio updatedProduction);
-    Recipe LoadRecipesFromJson();
+    List<Recipe> LoadRecipesFromJson();
     List<Item> LoadItemsFromJson();
 }

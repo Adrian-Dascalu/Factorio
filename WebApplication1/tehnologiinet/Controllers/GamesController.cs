@@ -52,11 +52,12 @@ public class GamesController : ControllerBase
         {
             foreach (var item in _factorioRepository.LoadItemsFromJson())
             {
-                    db.Items.Add(item);
+                db.Items.Add(item);
             }
 
             db.SaveChanges();
         }
+        
         return Ok(_factorioRepository.LoadItemsFromJson());
     }
 
