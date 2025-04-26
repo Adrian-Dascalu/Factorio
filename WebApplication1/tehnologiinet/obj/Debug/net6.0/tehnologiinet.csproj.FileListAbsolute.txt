@@ -156,3 +156,4 @@ C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\obj\Debug\net6.0\r
 C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\Factorio\production-nauvis-10min.json
 C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\Factorio\item.json
 C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\Factorio\recipe.json
+C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\Newtonsoft.Json.dll

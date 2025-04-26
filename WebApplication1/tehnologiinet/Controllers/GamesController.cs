@@ -42,7 +42,23 @@ public class GamesController : ControllerBase
     [HttpGet("LoadRecipesFromJson")]
     public IActionResult LoadRecipes()
     {
-        return Ok(_factorioRepository.LoadRecipesFromJson());
+        var recipes = _factorioRepository.LoadRecipesFromJson();
+
+        using (var db = new AppDbContext())
+        {
+            foreach (var recipe in recipes)
+            {
+                var exists = db.Recipes.Any(r => r.Id == recipe.Id);
+                if (!exists)
+                {
+                    db.Recipes.Add(recipe);
+                }
+            }
+
+            db.SaveChanges();
+        }
+
+        return Ok(recipes);
     }
 
     [HttpGet("LoadItemsFromJson")]

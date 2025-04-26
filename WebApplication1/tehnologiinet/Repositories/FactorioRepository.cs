@@ -3,6 +3,8 @@ using tehnologiinet.Entities;
 using System.Text.Json;
 using System.Runtime.Versioning;
 using Microsoft.AspNetCore.Http.Features;
+using Newtonsoft.Json.Linq;
+
 
 namespace tehnologiinet.Repositories;
 
@@ -34,9 +36,9 @@ public class FactorioRepository: IFactorioRepository
         return GetAllProductionFromDb().FirstOrDefault(x => x.Item == Item)!;
     }
 
-    public Consumption GetConsumptionByItem(Item Item)
+    public Item GetItemById(long Id)
     {
-        return GetAllConsumptionFromDb().FirstOrDefault(x => x.Item == Item)!;
+        return GetAllItemsFromDb().FirstOrDefault(x => x.Id == Id)!;
     }
 
     public void UpdateProduction(Factorio updatedProduction)
@@ -139,14 +141,26 @@ public class FactorioRepository: IFactorioRepository
         return itemData;
     }
 
-    public Item GetItemById(long Id)
-    {
-        return GetAllProductionFromDb().FirstOrDefault(x => x.Item.Id == Id)!.Item;
-    }
-
     public Item GetItemByName(string name)
     {
-        return GetAllProductionFromDb().FirstOrDefault(x => x.Item.Name == name)!.Item;
+        return GetAllItemsFromDb().FirstOrDefault(x => x.Name == name)!;
+    }
+
+    public long GetItemIdByName(string name)
+    {
+        using (var db = new AppDbContext())
+        {
+            var item = db.Items.FirstOrDefault(x => x.Name == name);
+            if (item != null)
+            {
+                return item.Id;
+            }
+            else
+            {
+                // Handle the case where the item is not found
+                return -1; // or throw an exception, or return a default value
+            }
+        }
     }
 
 // private List<Recipe> LoadRecipesFromJson()
@@ -167,64 +181,142 @@ public class FactorioRepository: IFactorioRepository
             ingredient.Amount = 1;
             ingredient.ItemId = 1;
             ingredient.RecipeId = 1;
-            
             //return new List<Production>(); // Return empty list if file does not exist
         }
 
         var json = File.ReadAllText(file_path);
-        var jsonData = JsonSerializer.Deserialize<Dictionary<string, object>>(json);
+        var jsonData = JObject.Parse(json);
 
         var recipeData = new List<Recipe>();
+        //var ingredients = new List<Ingredient>();
 
-        var keys = jsonData.Keys;
+        var recipeId = 1;
+        var ingredientId = 1;
 
-        foreach (var key in keys)
+        var itemChace = new Dictionary<string, Item>();
+        var recipeChace = new Dictionary<string, Recipe>();
+        
+        foreach (var topLevelKey in jsonData.Properties())
         {
-            var dictionary_sample = jsonData[key];
+            var recipeObject = topLevelKey.Value;
+            var recipeName = topLevelKey.Name;
 
-            if (key == "ingredients")
+            var ingrToken = recipeObject["ingredients"];
+            
+            var ingredients = new List<Ingredient>(); // 👈 RESET ingredients for each recipe
+
+            if (ingrToken is JArray ingrArray)
             {
-                var ingredients = new List<Ingredient>();
-
-                var ingredients_key = (List<Dictionary<string, object>>)dictionary_sample;
-                foreach (var ingr_key in ingredients_key)
+                foreach (var ingr in ingrArray)
                 {
-                    var ingredient = new Ingredient();
+                    var itemName = (string)ingr["name"];
 
-                    var ingredient_keys = ingr_key.Keys;
-                    foreach (var ingredient_key in ingredient_keys)
+                    if (!itemChace.ContainsKey(itemName))
                     {
-                        if (ingredient_key == "name")
+                        var item = GetItemByName(itemName);
+                        if (item == null)
                         {
-                            //get ingr_key id from item id by ingr_key name from db
-                            var ingredientId = GetItemByName(ingr_key[ingredient_key].ToString()).Id;
+                            Console.WriteLine($"Item '{itemName}' not found in database.");
+                            continue;
                         }
-                        else if (ingredient_key == "amount")
-                        {
-                            var ingredientAmount = ingr_key[ingredient_key];
-                        }
+                        itemChace[itemName] = item;
                     }
+
+                    var itemId = itemChace[itemName].Id;
+
+                    var ingredient = new Ingredient
+                    {
+                        Id = ingredientId++,
+                        ItemId = itemId,
+                        Amount = (int)ingr["amount"]
+                    };
+
+                    ingredients.Add(ingredient);
                 }
             }
-            else if (key == "results")
+
+            var resultsToken = recipeObject["results"];
+            if (resultsToken is JArray resultsArray)
             {
-                var results = (List<Dictionary<string, object>>)dictionary_sample;
-                foreach (var result in results)
+                foreach (var res in resultsArray)
                 {
-                    var result_keys = result.Keys;
-                    foreach (var result_key in result_keys)
+                    if (!itemChace.ContainsKey(recipeName))
                     {
-                        if (result_key == "amount")
+                        var item = GetItemByName(recipeName);
+                        if (item == null)
                         {
-                            var resultAmount = result[result_key];
+                            Console.WriteLine($"Item '{recipeName}' not found in database.");
+                            continue;
                         }
+
+                        itemChace[recipeName] = item;
                     }
+
+                    var recipe = new Recipe
+                    {
+                        Id = recipeId++,
+                        ItemId = itemChace[recipeName].Id,
+                        Ingredients = ingredients,
+                        Amount = (int)res["amount"]
+                    };
+
+                    foreach (var ingr in recipe.Ingredients)
+                    {
+                        ingr.RecipeId = recipe.Id;
+                    }
+
+                    recipeData.Add(recipe);
                 }
             }
-            else if (key == "name")
+
+    /*        // This part is commented out because it seems to be incomplete and not used in the current context
+            // You can uncomment and modify it as needed
+            foreach (var property in dictionary_sample.EnumerateObject())
             {
-                var name = dictionary_sample;
-            }
+
+                if (property.Name == "ingredients")
+                {
+                    foreach (var ingrElement in property.Value.EnumerateArray())
+                    {
+                        //Console.WriteLine(ingrElement.ToString());
+                        var itemName = ingrElement.EnumerateObject().First(p => p.Name == "name").Value.GetString();
+                        var itemId = GetItemIdByName(itemName);
+                        
+                        Console.WriteLine(property.Value);
+                        
+                        var recipe = new Recipe
+                        {
+                            Id = recipeId++,
+                            ItemId = itemId,
+                            Ingredients = new List<Ingredient>()
+                        };
+
+                        recipeData.Add(recipe);
+                    }
+
+                    using (var db = new AppDbContext())
+                    {
+                        foreach (var ingr in ingredients)
+                        {
+                            db.Ingredients.Add(ingr);
+                        }
+
+                        db.SaveChanges();
+                    }
+                }
+                else if (property.Name == "results")
+                {
+                    foreach (var resElement in property.Value.EnumerateArray())
+                    {
+                        var recipe = new Recipe
+                        {
+                            Amount = resElement.EnumerateObject().First(p => p.Name == "amount").Value.GetInt32()
+                        };
+
+                        recipeData.Add(recipe);
+                    }
+                }
+            }*/
         }
 
         return recipeData;
@@ -356,8 +448,21 @@ public class FactorioRepository: IFactorioRepository
     private List<Consumption> GetAllConsumptionFromDb()
     {
         using(var db = new AppDbContext())
-        {;
+        {
             return db.Consumptions.ToList();
         }
+    }
+
+    private List<Item> GetAllItemsFromDb()
+    {
+        using(var db = new AppDbContext())
+        {
+            return db.Items.ToList();
+        }
+    }
+
+    public Consumption GetConsumptionByItem(Item Item)
+    {
+        throw new NotImplementedException();
     }
 }
