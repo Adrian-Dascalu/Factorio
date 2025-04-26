@@ -36,7 +36,45 @@ public class GamesController : ControllerBase
     [HttpGet("LoadProductionFromJson")]
     public IActionResult LoadProduction()
     {
-        return Ok(_factorioRepository.LoadProductionFromJson());
+        var productions = _factorioRepository.LoadProductionFromJson();
+        
+        using (var db = new AppDbContext())
+        {
+            foreach (var production in productions)
+            {
+                var exists = db.Productions.Any(p => p.Id == production.Id);
+                if (!exists)
+                {
+                    db.Productions.Add(production);
+                }
+            }
+
+            db.SaveChanges();
+        }
+
+        return Ok(productions);
+    }
+
+    [HttpGet("LoadConsumtionFromJson")]
+    public IActionResult LoadConsumption()
+    {
+        var consumptions = _factorioRepository.LoadConsumptionFromJson();
+        
+        using (var db = new AppDbContext())
+        {
+            foreach (var consumption in consumptions)
+            {
+                var exists = db.Consumptions.Any(c => c.Id == consumption.Id);
+                if (!exists)
+                {
+                    db.Consumptions.Add(consumption);
+                }
+            }
+
+            db.SaveChanges();
+        }
+
+        return Ok(consumptions);
     }
 
     [HttpGet("LoadRecipesFromJson")]

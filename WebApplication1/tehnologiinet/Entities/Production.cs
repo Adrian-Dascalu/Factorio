@@ -4,5 +4,6 @@ public class Production
 {
     public long Id { get; set; }
     public Item Item { get; set; }
-    public int TotalQuantity { get; set; }
+    public long ItemId { get; set; }
+    public double TotalQuantity { get; set; }
 }

@@ -78,6 +78,10 @@ public class FactorioRepository: IFactorioRepository
         var keys = jsonData.Keys;
         //wooden chest, iron chest, steel chest, etc
 
+        var productionId = 1;
+
+        var itemChace = new Dictionary<string, Item>();
+
         foreach(var key in keys) // wooden chest, iron chest
         {
             //get the value of the item
@@ -95,21 +99,115 @@ public class FactorioRepository: IFactorioRepository
                 total_value += val;
             }
 
-            //create a new production object
-            Production production = new Production();
-            production.Id = 1;
-            production.Item = new Item();
-            production.Item.Id = 1;
-            production.Item.Name = key;
-            //production.Item.Recipe = null;
-            production.Item.Value = total_value;
+            //get the item by name
+            if (!itemChace.ContainsKey(key))
+            {
+                var item = GetItemByName(key);
+                if (item == null)
+                {
+                    Console.WriteLine($"Item '{key}' not found in database.");
+                    continue;
+                }
+                itemChace[key] = item;
+            }
+
+            var itemId = itemChace[key].Id;
             
-            //add the production to the list
+            //create a new production object
+            var production = new Production
+            {
+                Id = productionId++,
+                ItemId = itemId,
+                TotalQuantity = total_value
+            };
+            
+                //add the production object to the list
             productionData.Add(production);
         }
-        
+
         return productionData;
     }
+
+    public List<Consumption> LoadConsumptionFromJson()
+    {
+        var file_path = "Factorio/consumption-nauvis-10min.json";
+        
+        if (!File.Exists(file_path))
+        {
+            //return string empty
+            string empty = "empty";
+            Item item = new Item();
+            item.Id = 1;
+            item.Name = empty;
+            //item.Recipe = null;
+            Consumption consumption = new Consumption();
+            consumption.Id = 1;
+            consumption.Item = item;
+            
+            //return  production;
+            
+            //return new List<Production>(); // Return empty list if file does not exist
+        }
+
+        var json = File.ReadAllText(file_path);
+        var jsonData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, int>>>(json);
+        var consumptionData = new List<Consumption>();
+
+        //get every item from json (data from json is {item1:{sample1: 1, sample2:2}, item2:{sample1:1, sample2:2}})
+
+        // test is a dictionary with the keys of the json data
+
+        var keys = jsonData.Keys;
+
+        //wooden chest, iron chest, steel chest, etc
+        var consumptionId = 1;
+        var itemChace = new Dictionary<string, Item>();
+
+        foreach(var key in keys) // wooden chest, iron chest
+        {
+            //get the value of the item
+            var dictionary_sample = jsonData[key];
+            
+            var samples_keys = dictionary_sample.Keys; //id = where item_name == key
+
+            var total_value = 0;
+
+            foreach(var sample_key in samples_keys)
+            {
+                //get the value of the key
+                var val = dictionary_sample[sample_key];
+                //add the value to the total value
+                total_value += val;
+            }
+
+            //get the item by name
+            if (!itemChace.ContainsKey(key))
+            {
+                var item = GetItemByName(key);
+                if (item == null)
+                {
+                    Console.WriteLine($"Item '{key}' not found in database.");
+                    continue;
+                }
+                itemChace[key] = item;
+            }
+
+            var itemId = itemChace[key].Id;
+            
+            //create a new production object
+            var consumption = new Consumption
+            {
+                Id = consumptionId++,
+                ItemId = itemId,
+                TotalQuantity = total_value
+            };
+            
+                //add the production object to the list
+            consumptionData.Add(consumption);
+        }
+
+        return consumptionData;
+    }   
 
     public List<Item> LoadItemsFromJson()
     {
@@ -320,19 +418,6 @@ public class FactorioRepository: IFactorioRepository
         }
 
         return recipeData;
-    }
-
-    private List<Consumption> LoadConsumptionFromJson()
-    {
-        var file_path = "../Factorio/consumption-nauvis-10min.json";
-        
-        if (!File.Exists(file_path))
-        {
-            return new List<Consumption>(); // Return empty list if file does not exist
-        }
-
-        var json = File.ReadAllText(file_path);
-        return JsonSerializer.Deserialize<List<Consumption>>(json) ?? new List<Consumption>();
     }
 
     /*public void UpdateStudent(Student updatedStudent)

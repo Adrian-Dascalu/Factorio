@@ -157,3 +157,4 @@ C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\F
 C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\Factorio\item.json
 C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\Factorio\recipe.json
 C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\Factorio\consumption-nauvis-10min.json
