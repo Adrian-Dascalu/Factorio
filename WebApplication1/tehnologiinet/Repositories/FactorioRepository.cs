@@ -4,6 +4,7 @@ using System.Text.Json;
 using System.Runtime.Versioning;
 using Microsoft.AspNetCore.Http.Features;
 using Newtonsoft.Json.Linq;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace tehnologiinet.Repositories;
@@ -209,6 +210,72 @@ public class FactorioRepository: IFactorioRepository
         return consumptionData;
     }   
 
+    public List<Production> UpdateProductionFromJson()
+    {
+        var file_path = "Factorio/production-nauvis-10min.json";
+
+        var json = File.ReadAllText(file_path);
+        var jsonData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, int>>>(json);
+
+        var productionData = new List<Production>();
+        //get every item from json (data from json is {item1:{sample1: 1, sample2:2}, item2:{sample1:1, sample2:2}})
+
+        // test is a dictionary with the keys of the json data
+        var keys = jsonData.Keys;
+
+        //wooden chest, iron chest, steel chest, etc
+
+        var productionId = 1;
+        var itemChace = new Dictionary<string, Item>();
+
+        foreach(var key in keys) // wooden chest, iron chest
+        {
+            //get the value of the item
+            var dictionary_sample = jsonData[key];
+            
+            var samples_keys = dictionary_sample.Keys; //id = where item_name == key
+
+            var total_value = 0;
+
+            foreach(var sample_key in samples_keys)
+            {
+                //get the value of the key
+                var val = dictionary_sample[sample_key];
+                //add the value to the total value
+                total_value += val;
+            }
+
+            //get the item by name
+            if (!itemChace.ContainsKey(key))
+            {
+                var item = GetItemByName(key);
+                if (item == null)
+                {
+                    Console.WriteLine($"Item '{key}' not found in database.");
+                    continue;
+                }
+                itemChace[key] = item;
+            }
+
+            var itemId = itemChace[key].Id;
+            
+            //update the database with the new value
+            using (var db = new AppDbContext())
+            {
+                var production = db.Productions.FirstOrDefault(x => x.ItemId == itemId);
+                if (production != null)
+                {
+                    production.TotalQuantity = total_value;
+                    db.SaveChanges();
+                }
+
+                productionData.Add(production);
+            }
+        }
+
+        return productionData;
+    }
+
     public List<Item> LoadItemsFromJson()
     {
         var file_path = "Factorio/item.json";
@@ -366,6 +433,7 @@ public class FactorioRepository: IFactorioRepository
                     recipeData.Add(recipe);
                 }
             }
+            
 
     /*        // This part is commented out because it seems to be incomplete and not used in the current context
             // You can uncomment and modify it as needed
