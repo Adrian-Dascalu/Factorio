@@ -6,8 +6,8 @@ namespace tehnologiinet;
 public class AppDbContext : DbContext
 {
     public AppDbContext()
-    {
-        
+    {  
+
     }
 
     public AppDbContext(DbContextOptions<DbContext> options) : base(options)
@@ -23,6 +23,7 @@ public class AppDbContext : DbContext
     public DbSet<Item> Items { get; set; }
     public DbSet<Recipe> Recipes { get; set; }
     public DbSet<Ingredient> Ingredients { get; set; }
+    public DbSet<Construction> Constructions { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {

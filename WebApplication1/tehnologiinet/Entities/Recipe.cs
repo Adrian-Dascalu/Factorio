@@ -1,7 +1,9 @@
+using System.ComponentModel.DataAnnotations;
 namespace tehnologiinet.Entities;
 
 public class Recipe
 {
+    [Key]
     public long Id { get; set; }
     public long ItemId { get; set; }
     public Item Item { get; set; }

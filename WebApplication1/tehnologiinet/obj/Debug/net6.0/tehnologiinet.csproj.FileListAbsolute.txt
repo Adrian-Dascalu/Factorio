@@ -158,3 +158,11 @@ C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\F
 C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\Factorio\recipe.json
 C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\Factorio\consumption-nauvis-10min.json
+C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\Microsoft.Bcl.TimeProvider.dll
+C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\adiad\Desktop\factorio\WebApplication1\tehnologiinet\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

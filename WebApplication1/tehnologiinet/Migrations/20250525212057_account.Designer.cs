@@ -11,8 +11,8 @@ using tehnologiinet;
 namespace tehnologiinet.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250426162052_production_update")]
-    partial class production_update
+    [Migration("20250525212057_account")]
+    partial class account
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,6 +22,29 @@ namespace tehnologiinet.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("tehnologiinet.Entities.Construction", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("ItemId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<double>("TotalQuantity")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Constructions");
+                });
 
             modelBuilder.Entity("tehnologiinet.Entities.Consumption", b =>
                 {
@@ -33,6 +56,10 @@ namespace tehnologiinet.Migrations
 
                     b.Property<long>("ItemId")
                         .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<double>("TotalQuantity")
                         .HasColumnType("double precision");
@@ -101,8 +128,12 @@ namespace tehnologiinet.Migrations
                     b.Property<long>("ItemId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("TotalQuantity")
-                        .HasColumnType("integer");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<double>("TotalQuantity")
+                        .HasColumnType("double precision");
 
                     b.HasKey("Id");
 

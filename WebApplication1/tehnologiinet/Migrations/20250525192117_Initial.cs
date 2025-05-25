@@ -29,8 +29,8 @@ namespace tehnologiinet.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    TotalQuantity = table.Column<double>(type: "double precision", nullable: false),
-                    ItemId = table.Column<long>(type: "bigint", nullable: false)
+                    ItemId = table.Column<long>(type: "bigint", nullable: false),
+                    TotalQuantity = table.Column<double>(type: "double precision", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -49,8 +49,9 @@ namespace tehnologiinet.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
                     ItemId = table.Column<long>(type: "bigint", nullable: false),
-                    TotalQuantity = table.Column<int>(type: "integer", nullable: false)
+                    TotalQuantity = table.Column<double>(type: "double precision", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -69,8 +70,8 @@ namespace tehnologiinet.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Value = table.Column<double>(type: "double precision", nullable: false),
-                    ItemId = table.Column<long>(type: "bigint", nullable: false)
+                    ItemId = table.Column<long>(type: "bigint", nullable: false),
+                    Amount = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {

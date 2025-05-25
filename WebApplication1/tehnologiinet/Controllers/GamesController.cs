@@ -13,7 +13,6 @@ namespace tehnologiinet.Controllers;
 [EnableCors]
 public class GamesController : ControllerBase
 {
-    
     private readonly IFactorioRepository _factorioRepository;
 
     // connect to database
@@ -26,14 +25,7 @@ public class GamesController : ControllerBase
         _context = context;
     }
 
-    [HttpGet]
-    public IActionResult GetGamePage()
-    {
-        // Serve the firstpage.html file from wwwroot
-        return PhysicalFile(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/tictactoe", "firstpage.html"), "text/html");
-    }
-
-    [HttpGet("LoadProductionFromJson")]
+    [HttpPost("LoadProductionFromJson")]
     public IActionResult LoadProduction()
     {
         var productions = _factorioRepository.LoadProductionFromJson();
@@ -55,7 +47,7 @@ public class GamesController : ControllerBase
         return Ok(productions);
     }
 
-    [HttpGet("LoadConsumtionFromJson")]
+    [HttpPost("LoadConsumtionFromJson")]
     public IActionResult LoadConsumption()
     {
         var consumptions = _factorioRepository.LoadConsumptionFromJson();
@@ -77,7 +69,7 @@ public class GamesController : ControllerBase
         return Ok(consumptions);
     }
 
-    [HttpGet("LoadRecipesFromJson")]
+    [HttpPost("LoadRecipesFromJson")]
     public IActionResult LoadRecipes()
     {
         var recipes = _factorioRepository.LoadRecipesFromJson();
@@ -99,7 +91,7 @@ public class GamesController : ControllerBase
         return Ok(recipes);
     }
 
-    [HttpGet("LoadItemsFromJson")]
+    [HttpPost("LoadItemsFromJson")]
     public IActionResult LoadItems()
     {
         using (var db = new AppDbContext())
@@ -113,6 +105,108 @@ public class GamesController : ControllerBase
         }
         
         return Ok(_factorioRepository.LoadItemsFromJson());
+    }
+
+    [HttpPost("AddItem")]
+    public IActionResult AddItem([FromBody] Item model)
+    {
+        if (model == null)
+        {
+            return BadRequest("Item data is null");
+        }
+
+        var item = new Item
+        {
+            Name = model.Name,
+            Value = model.Value,
+        };
+
+        using (var db = new AppDbContext())
+        {
+            db.Items.Add(item);
+            db.SaveChanges();
+        }
+
+            return Ok(item);
+    }
+
+    [HttpDelete("DeleteItem")]
+    public IActionResult DeleteItem([FromBody] Item model)
+    {
+        if (model == null || model.Id <= 0)
+        {
+            return BadRequest("Invalid item data");
+        }
+
+        using (var db = new AppDbContext())
+        {
+            var item = db.Items.Find(model.Id);
+            if (item == null)
+            {
+                item = db.Items.FirstOrDefault(i => i.Name == model.Name);
+                if (item == null)
+                {
+                    return NotFound("Item not found");
+                }
+            }
+
+            db.Items.Remove(item);
+            db.SaveChanges();
+        }
+
+        return Ok("Item deleted successfully");
+    }
+
+    [HttpPut("UpdateItem")]
+    public IActionResult UpdateItem([FromBody] Item model)
+    {
+        if (model == null || model.Id <= 0)
+        {
+            return BadRequest("Invalid item data");
+        }
+
+        using (var db = new AppDbContext())
+        {
+            var item = db.Items.Find(model.Id);
+            if (item == null)
+            {
+                item = db.Items.FirstOrDefault(i => i.Name == model.Name);
+                if (item == null)
+                {
+                    return NotFound("Item not found");
+                }
+            }
+
+            item.Value = model.Value;
+
+            db.Items.Update(item);
+            db.SaveChanges();
+        }
+
+        return Ok("Item updated successfully");
+    }
+    
+    [HttpGet("GetAllProductions")]
+    public IActionResult GetAllProductions()
+    {
+        var productions = _factorioRepository.GetAllProductions();
+        if (productions.Count == 0)
+        {
+            return NotFound();
+        }
+
+        return Ok(productions); 
+    }
+
+    [HttpGet("GetNotNullProductions")]
+    public IActionResult GetNotNullProductions()
+    {
+        var productions = _factorioRepository.GetAllProduction().Where(p => p.TotalQuantity > 0).ToList();
+        if (productions.Count == 0)
+        {
+            return NotFound();
+        }
+        return Ok(productions);
     }
 
 
@@ -130,18 +224,18 @@ public class GamesController : ControllerBase
     //[HttpPost("update-result")]
     //public IActionResult UpdateResult([FromBody] MatchResult result)
     //{
-       // Console.WriteLine("Received update-result request");
+    // Console.WriteLine("Received update-result request");
 
-       // var factorio = _factorioRepository.GetFactorioByName(result.Name!);
-        
-        //if (student == null)
-        //{
-            //return NotFound("Student not found");
-        //}
+    // var factorio = _factorioRepository.GetFactorioByName(result.Name!);
 
-        //_studentsRepository.UpdateStudent(student); // Ensure this updates the data source
+    //if (student == null)
+    //{
+    //return NotFound("Student not found");
+    //}
 
-       // return Ok(User);
+    //_studentsRepository.UpdateStudent(student); // Ensure this updates the data source
+
+    // return Ok(User);
     //}
 
     // DTO to match the expected JSON body

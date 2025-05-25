@@ -11,7 +11,7 @@ using tehnologiinet;
 namespace tehnologiinet.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250402205707_Initial")]
+    [Migration("20250525192117_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -101,8 +101,12 @@ namespace tehnologiinet.Migrations
                     b.Property<long>("ItemId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("TotalQuantity")
-                        .HasColumnType("integer");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<double>("TotalQuantity")
+                        .HasColumnType("double precision");
 
                     b.HasKey("Id");
 
@@ -119,11 +123,11 @@ namespace tehnologiinet.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<long>("ItemId")
+                    b.Property<long>("Amount")
                         .HasColumnType("bigint");
 
-                    b.Property<double>("Value")
-                        .HasColumnType("double precision");
+                    b.Property<long>("ItemId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 

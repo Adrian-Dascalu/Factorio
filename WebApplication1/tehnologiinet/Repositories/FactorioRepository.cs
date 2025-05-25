@@ -118,6 +118,8 @@ public class FactorioRepository: IFactorioRepository
             var production = new Production
             {
                 Id = productionId++,
+                Name = key,
+                Item = itemChace[key],
                 ItemId = itemId,
                 TotalQuantity = total_value
             };
@@ -199,6 +201,8 @@ public class FactorioRepository: IFactorioRepository
             var consumption = new Consumption
             {
                 Id = consumptionId++,
+                Name = key,
+                Item = itemChace[key],
                 ItemId = itemId,
                 TotalQuantity = total_value
             };
@@ -435,164 +439,19 @@ public class FactorioRepository: IFactorioRepository
             }
             
 
-    /*        // This part is commented out because it seems to be incomplete and not used in the current context
-            // You can uncomment and modify it as needed
-            foreach (var property in dictionary_sample.EnumerateObject())
-            {
-
-                if (property.Name == "ingredients")
-                {
-                    foreach (var ingrElement in property.Value.EnumerateArray())
-                    {
-                        //Console.WriteLine(ingrElement.ToString());
-                        var itemName = ingrElement.EnumerateObject().First(p => p.Name == "name").Value.GetString();
-                        var itemId = GetItemIdByName(itemName);
-                        
-                        Console.WriteLine(property.Value);
-                        
-                        var recipe = new Recipe
-                        {
-                            Id = recipeId++,
-                            ItemId = itemId,
-                            Ingredients = new List<Ingredient>()
-                        };
-
-                        recipeData.Add(recipe);
-                    }
-
-                    using (var db = new AppDbContext())
-                    {
-                        foreach (var ingr in ingredients)
-                        {
-                            db.Ingredients.Add(ingr);
-                        }
-
-                        db.SaveChanges();
-                    }
-                }
-                else if (property.Name == "results")
-                {
-                    foreach (var resElement in property.Value.EnumerateArray())
-                    {
-                        var recipe = new Recipe
-                        {
-                            Amount = resElement.EnumerateObject().First(p => p.Name == "amount").Value.GetInt32()
-                        };
-
-                        recipeData.Add(recipe);
-                    }
-                }
-            }*/
         }
 
         return recipeData;
     }
 
-    /*public void UpdateStudent(Student updatedStudent)
+    public List<Production> GetAllProductions()
     {
-        var students = LoadStudentsFromJson();
-        var student = students.FirstOrDefault(s => s.Id == updatedStudent.Id);
-
-        if (student != null)
-        {
-            student.Wins = updatedStudent.Wins;
-            student.Losses = updatedStudent.Losses;
-            SaveStudentsToJson(students); // ✅ Save changes to file
-        }
-    }*/
-
-    /*private List<Student> LoadStudentsFromJson()
-    {
-        if (!File.Exists("students.json"))
-        {
-            return new List<Student>(); // Return empty list if file does not exist
-        }
-
-        var json = File.ReadAllText("students.json");
-        return JsonSerializer.Deserialize<List<Student>>(json) ?? new List<Student>();
-    }*/
-    
-    /*private List<Student> GetAllStudentsFromDb()
-    {
-        List<Student> studentsRetrieved = new List<Student>();
-        
-        var student1 = new Student
-        {
-            Id = 1,
-            FirstName = "John",
-            LastName = "Doe",
-            CNP = "1234567890123",
-            Email = "student@student.ro",
-            PhoneNumber = "0722222222",
-            Address = "Str. Studentilor",
-            City = "Iasi",
-            Country = "Romania",
-            PostalCode = "700000",
-            University = "Universitatea Tehnica",
-            Faculty = "Automatica si Calculatoare",
-            Specialization = "Calculatoare",
-            Wins = 0,
-            Losses = 0,
-            Username = "john_doe",
-        };
-        
-        var student2 = new Student
-        {
-            Id = 2,
-            FirstName = "Jane",
-            LastName = "Doe",
-            CNP = "1234567890123",
-            Email = "jane.doe@student.ucv.ro",
-            PhoneNumber = "0000000000",
-            Address = "Str. Studentilor nr. 1",
-            City = "Craiova",
-            Country = "Romania",
-            PostalCode = "700000",
-            University = "Universitatea Tehnica",
-            Faculty = "Automatica si Calculatoare",
-            Specialization = "Calculatoare",
-            Wins = 0,
-            Losses = 0,
-            Username = "jane_doe",
-        };
-        
-        var student3 = new Student
-        {
-            Id = 3,
-            FirstName = "Jane",
-            LastName = "Popescu",
-            CNP = "1234567890123",
-            Email = "jane.popescu@student.ucv.ro",
-            PhoneNumber = "0000000000",
-            Address = "Str. Studentilor nr. 3",
-            City = "Craiova",
-            Country = "Romania",
-            PostalCode = "700000",
-            University = "Universitatea Tehnica",
-            Faculty = "Automatica si Calculatoare",
-            Specialization = "Automatica si Informatica Aplicata",
-            Wins = 0,
-            Losses = 0,
-            Username = "jane_popescu",
-        };
-        
-        studentsRetrieved.Add(student1);
-        studentsRetrieved.Add(student2); 
-        studentsRetrieved.Add(student3);
-
-        if (!File.Exists("students.json"))
-            SaveStudentsToJson(studentsRetrieved);
-        else
-        {
-            studentsRetrieved = LoadStudentsFromJson();
-        }
-        
-        return studentsRetrieved;
-    }*/
+        return GetAllProductionFromDb();
+    }
 
     private List<Production> GetAllProductionFromDb()
     {
-        using(var db = new AppDbContext())
+        using (var db = new AppDbContext())
         {
             return db.Productions.ToList();
         }

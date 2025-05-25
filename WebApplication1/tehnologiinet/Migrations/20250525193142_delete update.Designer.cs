@@ -11,8 +11,8 @@ using tehnologiinet;
 namespace tehnologiinet.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250424175711_update_recipe")]
-    partial class update_recipe
+    [Migration("20250525193142_delete update")]
+    partial class deleteupdate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -101,8 +101,8 @@ namespace tehnologiinet.Migrations
                     b.Property<long>("ItemId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("TotalQuantity")
-                        .HasColumnType("integer");
+                    b.Property<double>("TotalQuantity")
+                        .HasColumnType("double precision");
 
                     b.HasKey("Id");
 
