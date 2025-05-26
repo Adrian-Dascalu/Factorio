@@ -14,9 +14,9 @@ public class CategoryController : ControllerBase
 {
     private readonly IFactorioRepository _factorioRepository;
 
-    private readonly AppDbContext _context;
+    private readonly ApplicationDbContext _context;
 
-    public CategoryController(IFactorioRepository factorioRepository, AppDbContext context)
+    public CategoryController(IFactorioRepository factorioRepository, ApplicationDbContext context)
     {
         _factorioRepository = factorioRepository;
         _context = context;

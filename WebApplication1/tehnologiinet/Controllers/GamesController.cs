@@ -16,10 +16,10 @@ public class GamesController : ControllerBase
     private readonly IFactorioRepository _factorioRepository;
 
     // connect to database
-    private readonly AppDbContext _context;
+    private readonly ApplicationDbContext _context;
 
     // Injecting repository via constructor
-    public GamesController(IFactorioRepository factorioRepository, AppDbContext context)
+    public GamesController(IFactorioRepository factorioRepository, ApplicationDbContext context)
     {
         _factorioRepository = factorioRepository;
         _context = context;
@@ -30,7 +30,7 @@ public class GamesController : ControllerBase
     {
         var productions = _factorioRepository.LoadProductionFromJson();
         
-        using (var db = new AppDbContext())
+        using (var db = new DatabaseContext())
         {
             foreach (var production in productions)
             {
@@ -52,7 +52,7 @@ public class GamesController : ControllerBase
     {
         var consumptions = _factorioRepository.LoadConsumptionFromJson();
         
-        using (var db = new AppDbContext())
+        using (var db = new DatabaseContext())
         {
             foreach (var consumption in consumptions)
             {
@@ -74,7 +74,7 @@ public class GamesController : ControllerBase
     {
         var recipes = _factorioRepository.LoadRecipesFromJson();
 
-        using (var db = new AppDbContext())
+        using (var db = new DatabaseContext())
         {
             foreach (var recipe in recipes)
             {
@@ -94,7 +94,7 @@ public class GamesController : ControllerBase
     [HttpPost("LoadItemsFromJson")]
     public IActionResult LoadItems()
     {
-        using (var db = new AppDbContext())
+        using (var db = new DatabaseContext())
         {
             foreach (var item in _factorioRepository.LoadItemsFromJson())
             {
@@ -121,7 +121,7 @@ public class GamesController : ControllerBase
             Value = model.Value,
         };
 
-        using (var db = new AppDbContext())
+        using (var db = new DatabaseContext())
         {
             db.Items.Add(item);
             db.SaveChanges();
@@ -138,7 +138,7 @@ public class GamesController : ControllerBase
             return BadRequest("Invalid item data");
         }
 
-        using (var db = new AppDbContext())
+        using (var db = new DatabaseContext())
         {
             var item = db.Items.Find(model.Id);
             if (item == null)
@@ -165,7 +165,7 @@ public class GamesController : ControllerBase
             return BadRequest("Invalid item data");
         }
 
-        using (var db = new AppDbContext())
+        using (var db = new DatabaseContext())
         {
             var item = db.Items.Find(model.Id);
             if (item == null)

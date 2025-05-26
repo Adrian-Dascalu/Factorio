@@ -1,14 +1,9 @@
-using System.Drawing.Printing;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
-using tehnologiinet.Repositories;
-using tehnologiinet.Entities;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using tehnologiinet.Models;
 
@@ -16,7 +11,7 @@ namespace tehnologiinet.Controllers;
 
 [ApiController]
 [Route("[controller]/[action]")]
-public class AccountController : ControllerBase
+public class AccountController: ControllerBase
 {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;

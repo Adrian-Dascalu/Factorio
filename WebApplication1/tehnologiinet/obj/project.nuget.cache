@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "KA5RqX4lOBk=",
+  "dgSpecHash": "Pd8zc4qmGfw=",
   "success": true,
   "projectFilePath": "C:\\Users\\adiad\\Desktop\\factorio\\WebApplication1\\tehnologiinet\\tehnologiinet.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\adiad\\.nuget\\packages\\entityframework\\6.5.1\\entityframework.6.5.1.nupkg.sha512",
     "C:\\Users\\adiad\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\adiad\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.0\\microsoft.aspnetcore.authentication.jwtbearer.6.0.0.nupkg.sha512",
     "C:\\Users\\adiad\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.0\\microsoft.aspnetcore.cryptography.internal.6.0.0.nupkg.sha512",
     "C:\\Users\\adiad\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.0\\microsoft.aspnetcore.cryptography.keyderivation.6.0.0.nupkg.sha512",
     "C:\\Users\\adiad\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\6.0.0\\microsoft.aspnetcore.identity.entityframeworkcore.6.0.0.nupkg.sha512",
@@ -33,6 +34,8 @@
     "C:\\Users\\adiad\\.nuget\\packages\\microsoft.identitymodel.abstractions\\8.11.0\\microsoft.identitymodel.abstractions.8.11.0.nupkg.sha512",
     "C:\\Users\\adiad\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\8.11.0\\microsoft.identitymodel.jsonwebtokens.8.11.0.nupkg.sha512",
     "C:\\Users\\adiad\\.nuget\\packages\\microsoft.identitymodel.logging\\8.11.0\\microsoft.identitymodel.logging.8.11.0.nupkg.sha512",
+    "C:\\Users\\adiad\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.10.0\\microsoft.identitymodel.protocols.6.10.0.nupkg.sha512",
+    "C:\\Users\\adiad\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.10.0\\microsoft.identitymodel.protocols.openidconnect.6.10.0.nupkg.sha512",
     "C:\\Users\\adiad\\.nuget\\packages\\microsoft.identitymodel.tokens\\8.11.0\\microsoft.identitymodel.tokens.8.11.0.nupkg.sha512",
     "C:\\Users\\adiad\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\adiad\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

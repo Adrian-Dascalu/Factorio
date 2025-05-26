@@ -17,10 +17,10 @@ public class ConstructionController : ControllerBase
     private readonly IFactorioRepository _factorioRepository;
 
     // connect to database
-    private readonly AppDbContext _context;
+    private readonly DatabaseContext _context;
 
     // Injecting repository via constructor
-    public ConstructionController(IFactorioRepository factorioRepository, AppDbContext context)
+    public ConstructionController(IFactorioRepository factorioRepository, DatabaseContext context)
     {
         _factorioRepository = factorioRepository;
         _context = context;

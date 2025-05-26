@@ -207,7 +207,7 @@ public class FactorioRepository: IFactorioRepository
                 TotalQuantity = total_value
             };
             
-                //add the production object to the list
+                //add the production object to the listfactorio
             consumptionData.Add(consumption);
         }
 
@@ -264,7 +264,7 @@ public class FactorioRepository: IFactorioRepository
             var itemId = itemChace[key].Id;
             
             //update the database with the new value
-            using (var db = new AppDbContext())
+            using (var db = new DatabaseContext())
             {
                 var production = db.Productions.FirstOrDefault(x => x.ItemId == itemId);
                 if (production != null)
@@ -317,7 +317,7 @@ public class FactorioRepository: IFactorioRepository
 
     public long GetItemIdByName(string name)
     {
-        using (var db = new AppDbContext())
+        using (var db = new DatabaseContext())
         {
             var item = db.Items.FirstOrDefault(x => x.Name == name);
             if (item != null)
@@ -451,7 +451,7 @@ public class FactorioRepository: IFactorioRepository
 
     private List<Production> GetAllProductionFromDb()
     {
-        using (var db = new AppDbContext())
+        using (var db = new DatabaseContext())
         {
             return db.Productions.ToList();
         }
@@ -459,7 +459,7 @@ public class FactorioRepository: IFactorioRepository
 
     private List<Consumption> GetAllConsumptionFromDb()
     {
-        using(var db = new AppDbContext())
+        using(var db = new DatabaseContext())
         {
             return db.Consumptions.ToList();
         }
@@ -467,7 +467,7 @@ public class FactorioRepository: IFactorioRepository
 
     private List<Item> GetAllItemsFromDb()
     {
-        using(var db = new AppDbContext())
+        using(var db = new DatabaseContext())
         {
             return db.Items.ToList();
         }
